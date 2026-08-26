@@ -92,12 +92,28 @@
       <ol>
         <li>Open the Google Calendar app</li>
         <li>Tap the menu (☰) → Settings → Add calendar → From URL</li>
-        <li>Paste this link:
-          <code>https://akshar18-afk.github.io/gci/GCI_Fall_2026_Events.ics</code>
+        <li>Paste this link (or use the copy button below):
+          <code id="icsUrl">https://akshar18-afk.github.io/gci/GCI_Fall_2026_Events.ics</code>
         </li>
         <li>Tap Add calendar</li>
       </ol>
+      <button id="copyBtn" onclick="copyLink()" style="margin-top:10px;padding:10px 16px;border-radius:8px;border:1px solid #8C1D40;background:#fff;color:#8C1D40;font-weight:600;font-size:14px;">
+        📋 Copy link
+      </button>
     </div>
   </div>
+
+  <script>
+    function copyLink() {
+      const text = document.getElementById('icsUrl').textContent;
+      const btn = document.getElementById('copyBtn');
+      navigator.clipboard.writeText(text).then(function() {
+        btn.textContent = '✅ Copied!';
+        setTimeout(function() { btn.textContent = '📋 Copy link'; }, 2000);
+      }).catch(function() {
+        btn.textContent = 'Copy failed — select text manually';
+      });
+    }
+  </script>
 </body>
 </html>
